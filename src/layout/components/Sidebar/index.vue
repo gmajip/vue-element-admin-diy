@@ -12,13 +12,15 @@
         :collapse-transition="false"
         mode="vertical"
       >
-        <sidebar-item v-for="route in routes" :key="route.path" :item="route" :base-path="route.path" />
+        <sidebar-item v-for="route in routes.children" :key="route.path" :item="route" :base-path="resolvePath(routes.path, route.path)" />
+<!--        <sidebar-item v-for="route in routes" :key="route.path" :item="route" :base-path="route.path" />-->
       </el-menu>
     </el-scrollbar>
   </div>
 </template>
 
 <script>
+import path from 'path'
 import { mapGetters } from 'vuex'
 import Logo from './Logo'
 import SidebarItem from './SidebarItem'
@@ -31,7 +33,9 @@ export default {
       'sidebar'
     ]),
     routes() {
-      return this.$router.options.routes
+      return this.$store.getters.sideMenu
+      // console.log(this.$router.options.routes)
+      // return this.$router.options.routes
     },
     activeMenu() {
       const route = this.$route
@@ -50,6 +54,11 @@ export default {
     },
     isCollapse() {
       return !this.sidebar.opened
+    }
+  },
+  methods: {
+    resolvePath(parentPath, routePath) {
+      return path.resolve(parentPath, routePath)
     }
   }
 }

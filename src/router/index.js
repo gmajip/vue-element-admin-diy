@@ -32,6 +32,17 @@ import Layout from '@/layout'
  */
 export const constantRoutes = [
   {
+    path: '/redirect',
+    component: Layout,
+    hidden: true,
+    children: [
+      {
+        path: '/redirect/:path(.*)',
+        component: () => import('@/views/redirect/index')
+      }
+    ]
+  },
+  {
     path: '/login',
     component: () => import('@/views/login/index'),
     hidden: true
@@ -47,6 +58,7 @@ export const constantRoutes = [
     path: '/',
     component: Layout,
     redirect: '/dashboard',
+    name: 'Dashboard',
     children: [{
       path: 'dashboard',
       name: 'Dashboard',
@@ -58,7 +70,7 @@ export const constantRoutes = [
   {
     path: '/example',
     component: Layout,
-    redirect: '/example/table',
+    redirect: 'noRedirect',
     name: 'Example',
     meta: { title: 'Example', icon: 'el-icon-s-help' },
     children: [
@@ -80,12 +92,13 @@ export const constantRoutes = [
   {
     path: '/form',
     component: Layout,
+    name: '表单',
     children: [
       {
         path: 'index',
-        name: 'Form',
+        name: '表单',
         component: () => import('@/views/form/index'),
-        meta: { title: 'Form', icon: 'form' }
+        meta: { title: '表单', icon: 'form' }
       }
     ]
   },
@@ -152,6 +165,7 @@ export const constantRoutes = [
   {
     path: 'external-link',
     component: Layout,
+    name: 'link',
     children: [
       {
         path: 'https://panjiachen.github.io/vue-element-admin-site/#/',

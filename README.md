@@ -4,7 +4,7 @@
 - 修改侧边滚动条样式
 - 增加一个业务页面布局 头部固定 底部固定 中间自适应滚动条
 
-[<img src="./preview.jpg" />](./preview.jpg)
+[<img src="https://www.hui-yu.net/uploads/20200731/1596184689245639.jpg" />](https://www.hui-yu.net/uploads/20200731/1596184689245639.jpg)
 # vue-admin-template
 
 > 这是一个极简的 vue admin 管理后台。它只包含了 Element UI & axios & iconfont & permission control & lint，这些搭建后台必要的东西。
